@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id = "java" class = "ai.ineuron.beans.Javacourse"></bean>
+    <bean id = "python" class = "ai.ineuron.beans.python"></bean>
+    <bean id = "sql" class = "ai.ineuron.beans.sql"></bean>
+    <bean id = "select" class = "ai.ineuron.beans.CourseSelection">
+    <property name="coUrse" ref="python"></property> 
+    </bean>
+
+</beans>
