@@ -4,11 +4,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>pwskills</groupId>
-  <artifactId>maven_proj-01</artifactId>
-  <version>1.2</version>
+  <groupId>ineuron</groupId>
+  <artifactId>ServletJSPJDBCApp</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
 
-  <name>maven_proj-01</name>
+  <name>ServletJSPJDBCApp Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -18,7 +19,8 @@
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
- <dependencies>
+  <dependencies>
+	  
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -26,27 +28,47 @@
       <scope>test</scope>
     </dependency>
     
-    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <dependency>
+    	<groupId>com.mysql</groupId>
+    	<artifactId>mysql-connector-j</artifactId>
+    	<version>8.0.32</version>
+	</dependency>
+	
 	<dependency>
-	    <groupId>mysql</groupId>
-	    <artifactId>mysql-connector-java</artifactId>
-	    <version>8.0.32</version>
+		<groupId>javax.servlet</groupId>
+		<artifactId>javax.servlet-api</artifactId>
+		<version>3.0.1</version>
+		<scope>provided</scope>
 	</dependency>
     
- </dependencies>
-  
-  
-	  
+    <dependency>
+    	<groupId>org.hibernate</groupId>
+    	<artifactId>hibernate-core</artifactId>
+    	<version>5.6.15.Final</version>
+	</dependency>
+	
+		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>jstl</artifactId>
+	    <version>1.2</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/javax.servlet.jsp/jsp-api -->
+
+
+
+   </dependencies>
 
   <build>
+    <finalName>ServletJSPJDBCApp</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
-        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
         </plugin>
-        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+        <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.0.2</version>
@@ -60,8 +82,8 @@
           <version>2.22.1</version>
         </plugin>
         <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.0.2</version>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.2.2</version>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
@@ -71,40 +93,21 @@
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.8.2</version>
         </plugin>
-        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
-        <plugin>
-          <artifactId>maven-site-plugin</artifactId>
-          <version>3.7.1</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>3.0.0</version>
-        </plugin>
         
-          
-<!-- Executing maven as java program-->
-		<plugin>
-		<groupId>org.codehaus.mojo</groupId>
-		<artifactId>exec-maven-plugin</artifactId>
-		<version>3.1.0</version>
-		<executions>
-		<execution>
-		
-		<id> MYApp</id>
-		<phase>package</phase>
-		
-		<goals>
-		<goal>java</goal>
-		</goals>
-		</execution>
-		</executions>
-		<configuration>
-		<mainClass>in.pwskills.MyApp</mainClass>
-		</configuration>
-		</plugin>
-</plugins>
-</pluginManagement>
-</build>
+        <plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					  <server>tomcat</server>
+					  <url>http://localhost:2020/manager</url>
+					  <path>/StudentApp</path>
+					  <port>9999</port>
+				</configuration>
+			</plugin>
+        
+        
+      </plugins>
+    </pluginManagement>
+  </build>
 </project>
-     
-
